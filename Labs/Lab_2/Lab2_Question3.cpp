@@ -61,7 +61,7 @@ cout << "I am sorry that I am unable to turn in my homework at this time. " ;
 cout << "First, I ate a rotten " << food << ", which made me turn " << color << " and extremely ill. " ;
 cout << "I came down with a fever of " << number << ". " ;
 cout << "Next, my " << adjective << " pet " << animal << " must have smelled the remains of the " << food << " on my homework, because he ate it. " ;
-cout << "I am currently rewriting my homework and hope you will accept it here." ; 
+cout << "I am currently rewriting my homework and hope you will accept it here." << endl; 
 cout << endl;
 cout << "Sincerely," << endl;
 cout << student << endl;
