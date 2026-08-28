@@ -14,6 +14,6 @@ int main()
     cout << "4. 15 divided by 4 has remainder\t= " << 15 / 4 << endl;
     cout << endl;
     cout << "\tThis is end of my first Program" << endl;
-    cout << "\t \t \t \t \t Thank you!" << endl;    
+    cout << "\t\tThank you!" << endl;    
     return 0;
 }
