@@ -35,7 +35,7 @@ switch (choice)
             if (radius <= 0)
             {cout << "Incorrect Value!" << endl;}
             else {
-        area = 0.5 * 3.14 * radius * radius;
+        area = 3.14 * radius * radius;
         cout << "Area of the Circle is " << area << endl;}
         break;
     case 3 : 
