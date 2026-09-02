@@ -20,7 +20,6 @@ int main ()
 // Variables 
 string animal; 
 char answer;
-int fee; 
 
 // Questions
 cout << "Enter the pet type (cat or dog) : " << endl;
@@ -28,36 +27,48 @@ getline(cin, animal);
 cout << "Has the pet been spayed or neutered (y/n)?" << endl;
 cin >> answer; 
 
-if (animal = cat)
-{
-    switch (answer)
+if (animal == "CAT" || animal == "CAt"|| animal == "CaT" || animal == "cAT" || animal == "Cat" || animal == "cAt" || animal == "caT" || animal == "cat")
     {
-        case 'y' :
-            cout << "Pet Tag fee is $4.00" << endl;
-        case 'n' :
-            cout << "Pet Tag fee is $8.00" << endl;
-        default  :
-            cout << "Invalid choice for Spayed or neutered!" << endl;
+    if (answer == 'y' || answer == 'Y')
+        {cout << "Pet Tag fee is $4.00" << endl;}
+    else if (answer == 'n' || answer == 'N')
+        {cout << "Pet Tag fee is $8.00" << endl;}
+    else
+        {
+            cout << "Re-enter spayed or neutered (y/n): ";
+            cin >> answer;
+            
+                if (answer == 'y' || answer == 'Y')
+                    {cout << "Pet Tag fee is $4.00" << endl;}
+                else if (answer == 'n' || answer == 'N')
+                     {cout << "Pet Tag fee is $8.00" << endl;}
+                else
+                    {cout << "Invalid choice for Spayed or neutered!" << endl;}
+        }
     }
-}
 
-else if (animal = dog)
-{
-    switch (answer)
+else if ( animal == "DOG" || animal == "DOg" || animal == "DoG" || animal == "dOG" || animal == "Dog" || animal == "dOg" || animal == "doG" || animal == "dog")
     {
-        case 'y' :
-            cout << "Pet Tag fee is $6.00" << endl;
-        case 'n' :
-            cout << "Pet Tag fee is $12.00" << endl;
-        default  :
-            cout << "Invalid choice for Spayed or neutered!" << endl;
+    if (answer == 'y' || answer == 'Y')
+        {cout << "Pet Tag fee is $6.00" << endl;}
+    else if (answer == 'n' || answer == 'N')
+        {cout << "Pet Tag fee is $12.00" << endl;}
+    else
+        {
+            cout << "Re-enter spayed or neutered (y/n): ";
+            cin >> answer;
+            
+                if (answer == 'y' || answer == 'Y')
+                    {cout << "Pet Tag fee is $6.00" << endl;}
+                else if (answer == 'n' || answer == 'N')
+                     {cout << "Pet Tag fee is $12.00" << endl;}
+                else
+                    {cout << "Invalid choice for Spayed or neutered!" << endl;}
+        }
     }
-}
 
 else
-{
-    cout << "Only cats and dogs need pet tags!" << endl;
-}
+{cout << "Only cats and dogs need pet tags!" << endl;}
 
 return 0;
 
