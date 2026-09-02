@@ -36,7 +36,7 @@ switch (choice)
             if (radius <= 0)
             {cout << "Incorrect Value!" << endl;}
             else {
-        area = 3.14 * radius * radius;
+        area = 3.141592 * radius * radius;
         cout << "Area of the Circle is " << setprecision(4) << area << endl;}
         break;
     case 3 : 
