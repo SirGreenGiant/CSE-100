@@ -23,13 +23,14 @@ char answer;
 
 // Questions
 cout << "Enter the pet type (cat or dog) : " << endl;
-getline(cin, animal);
-cout << "Has the pet been spayed or neutered (y/n)?" << endl;
-cin >> answer; 
+getline(cin, animal); 
 
 if (animal == "CAT" || animal == "CAt"|| animal == "CaT" || animal == "cAT" || animal == "Cat" || animal == "cAt" || animal == "caT" || animal == "cat")
     {
-    if (answer == 'y' || answer == 'Y')
+    cout << "Has the pet been spayed or neutered (y/n)?" << endl;
+    cin >> answer;
+
+        if (answer == 'y' || answer == 'Y')
         {cout << "Pet Tag fee is $4.00" << endl;}
     else if (answer == 'n' || answer == 'N')
         {cout << "Pet Tag fee is $8.00" << endl;}
@@ -49,7 +50,10 @@ if (animal == "CAT" || animal == "CAt"|| animal == "CaT" || animal == "cAT" || a
 
 else if ( animal == "DOG" || animal == "DOg" || animal == "DoG" || animal == "dOG" || animal == "Dog" || animal == "dOg" || animal == "doG" || animal == "dog")
     {
-    if (answer == 'y' || answer == 'Y')
+    cout << "Has the pet been spayed or neutered (y/n)?" << endl;
+    cin >> answer;
+    
+        if (answer == 'y' || answer == 'Y')
         {cout << "Pet Tag fee is $6.00" << endl;}
     else if (answer == 'n' || answer == 'N')
         {cout << "Pet Tag fee is $12.00" << endl;}

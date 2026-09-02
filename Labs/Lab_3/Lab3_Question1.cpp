@@ -1,6 +1,7 @@
 // Question 1: Write a menu-driven C++ program that finds and displays areas of 3 different objects.
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main ()
@@ -36,7 +37,7 @@ switch (choice)
             {cout << "Incorrect Value!" << endl;}
             else {
         area = 3.14 * radius * radius;
-        cout << "Area of the Circle is " << area << endl;}
+        cout << "Area of the Circle is " << setprecision(4) << area << endl;}
         break;
     case 3 : 
         cout << "Enter the side for a Right Triangle:" << endl;
