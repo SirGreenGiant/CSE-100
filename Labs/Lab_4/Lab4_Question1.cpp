@@ -80,7 +80,7 @@ if (customerType == 'r')
     // 3 attempts : Section 2
         while (section2 != true)
         {
-            cout << "Minutes cannot be negative! Please enter the phone usage in minutes: ";
+            cout << "Invalid phone usage! Please enter the phone usage in minutes: ";
             cin >> minutes;
             attempts++;
 
@@ -140,7 +140,7 @@ else if (customerType == 'b')
     // 3 attempts : Section 2
         while (section2 != true)
         {
-            cout << "Minutes cannot be negative! Please enter the phone usage in minutes: ";
+            cout << "Invalid phone usage! Please enter the phone usage in minutes: ";
             cin >> minutes;
             attempts++;
 
