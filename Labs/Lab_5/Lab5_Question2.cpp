@@ -71,7 +71,7 @@ for (int i = 0; i < number; i++)
 }
 // Final Output
 cout << endl;
-cout << "City\tPopulation Bar Graph" << endl;
+cout << "City    Population Bar Graph" << endl;
 cout << "---------------------------------" << endl;
 
 for (int i = 0; i < number; i++)
