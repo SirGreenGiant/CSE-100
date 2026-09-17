@@ -60,6 +60,8 @@ for (int i = 0; i < number; i++)
     
     if (cities[i] > 0 && cities[i] < 1000)
     {star_number = 1;}
+    if (cities[i] == 0)
+    {star_number = 0;}
     
     bar_graph[i] = star_number;
 
@@ -75,7 +77,7 @@ cout << "City    Population Bar Graph" << endl;
 cout << "---------------------------------" << endl;
 
 for (int i = 0; i < number; i++)
-{cout << " " << i + 1 << "	 " << bar_graph_star[i] << endl;}
+{cout << " " << i + 1 << "       " << bar_graph_star[i] << endl;}
 
 return 0;
 }
