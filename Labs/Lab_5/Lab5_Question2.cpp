@@ -24,7 +24,7 @@ while (number < 0)
     cin >> number;
     
     if (attempt_number == 3)
-    {return 1;}
+    {cout << "Too many invalid inputs. Exiting program." << endl; return 1;}
 }
 //Arrays
 int cities[number];
@@ -46,17 +46,21 @@ for (int i = 0; i < number; i++)
         cin >> pop;
     
         if (attempt_population == 3)
-        {return 1;}
+        {cout << "Too many invalid inputs. Exiting program." << endl; return 1;}
     }
 // Putting the correct number in the array
     cities[i] = pop;
 }
 // Bar Graph Generation
 for (int i = 0; i < number; i++)
-{
+{   
     initial_num = static_cast<double>(cities[i])/1000;
     star_number = ceil(initial_num);
     star_number = static_cast<int>(star_number);
+    
+    if (cities[i] > 0 && cities[i] < 1000)
+    {star_number = 1;}
+    
     bar_graph[i] = star_number;
 
     star_output = bar_graph[i];
