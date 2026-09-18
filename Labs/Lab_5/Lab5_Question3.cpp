@@ -34,7 +34,7 @@ for (int attempt = 1; attempt <= 3; attempt++)
 }
 if (!valid_store)
     {   cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
-        sales_store_entry = 0; break;   }
+        sales_store_entry = 0;    }
 
 sales[i] = sales_store_entry;
 }
