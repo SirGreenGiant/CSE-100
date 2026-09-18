@@ -23,15 +23,15 @@ cout << "Enter the sales for store " << i << " : ";
 cin >> sales_store_entry;
 
 // Error Checker
-int attempt = 0;
+int attempt = 1;
 while (sales_store_entry < 0)
 {
-    cout << "Invalid sale amount! Please enter a non-negative number. " << "Attempt " << attempt + 1 << " of 3." << endl;
+    cout << "Invalid sale amount! Please enter a non-negative number. " << "Attempt " << attempt << " of 3." << endl;
     cout << "Enter the sales for store " << i << " : ";
     cin >> sales_store_entry;
     attempt++;
 
-    if (attempt == 3)
+    if (attempt == 4)
     {   //cout << "Attempt " << attempt << " of 3." << endl;
         cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
         sales_store_entry = 0; break;   }
