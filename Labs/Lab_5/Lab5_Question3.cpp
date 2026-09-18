@@ -18,24 +18,23 @@ cout << fixed << setprecision(2);
 for (int i = 0; i < 10; i++)
 {
 double sales_store_entry;
+bool valid_store = false;
 
-cout << "Enter the sales for store " << i << " : ";
-cin >> sales_store_entry;
 
 // Error Checker
-int attempt = 1;
-while (sales_store_entry < 0)
+for (int attempt = 1; attempt <= 3; attempt++)
 {
-    cout << "Invalid sale amount! Please enter a non-negative number. " << "Attempt " << attempt << " of 3." << endl;
     cout << "Enter the sales for store " << i << " : ";
     cin >> sales_store_entry;
-    attempt++;
 
-    if (attempt == 4)
-    {   //cout << "Attempt " << attempt << " of 3." << endl;
-        cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
-        sales_store_entry = 0; break;   }
+    if (sales_store_entry >= 0)
+    {valid_store = true; break;}
+
+    cout << "Invalid sale amount! Please enter a non-negative number. " << "Attempt " << attempt << " of 3." << endl;
 }
+if (!valid_store)
+    {   cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
+        sales_store_entry = 0; break;   }
 
 sales[i] = sales_store_entry;
 }
