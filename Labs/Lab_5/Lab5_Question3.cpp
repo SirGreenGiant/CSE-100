@@ -33,7 +33,7 @@ while (sales_store_entry < 0)
 
     if (attempt == 3)
     {   cout << "Attempt " << attempt << " of 3." << endl;
-        cout << "Too many invalid entries, moving to next store." << endl;
+        cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
         sales_store_entry = 0; break;   }
 }
 
@@ -80,8 +80,8 @@ average_sale = total / 10.0;
 
 // Final Output 
 cout << endl;
-cout << "Highest sale: " << highest_sell << " at Store " << highest_store << endl;
-cout << "Lowest sale: " << lowest_sell << " at Store " << lowest_store << endl;
+cout << "Highest Sale: " << highest_sell << " at Store " << highest_store << endl;
+cout << "Lowest Sale: " << lowest_sell << " at Store " << lowest_store << endl;
 cout << "Average Sale: " << average_sale << endl;
 
 return 0;
