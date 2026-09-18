@@ -32,7 +32,7 @@ while (sales_store_entry < 0)
     attempt++;
 
     if (attempt == 3)
-    {   cout << "Attempt " << attempt << " of 3." << endl;
+    {   //cout << "Attempt " << attempt << " of 3." << endl;
         cout << "Too many invalid attempts. Sale for store " << i << " set to 0." << endl;
         sales_store_entry = 0; break;   }
 }
