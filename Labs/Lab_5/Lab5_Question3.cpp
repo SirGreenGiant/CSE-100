@@ -57,7 +57,7 @@ for (int i = 0; i < 10; i++)
 // Finding the lowest selling store 
 for (int i = 0; i < 10; i++)
 {
-    if (i = 0)
+    if (i == 0)
     {
     lowest_sell = sales[i];
     lowest_store = i;
