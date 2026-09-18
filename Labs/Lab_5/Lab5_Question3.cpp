@@ -9,8 +9,8 @@ int main ()
 int stores[10];
 double sales[10];
 // Variables
-int highest_store, lowest_store;
-double highest_sell, lowest_sell, sale, total;
+int highest_store = 0, lowest_store = 0;
+double highest_sell = 0, lowest_sell = 0, sale, total;
 
 cout << fixed << setprecision(2);
 
@@ -45,7 +45,7 @@ sales[i] = sales_store_entry;
 // Finding the highest selling store 
 for (int i = 0; i < 10; i++)
 {
-    if (sales[i] > sales[i-1])
+    if (sales[i] > highest_sell)
     {
     highest_sell = sales[i];
     highest_store = i;
@@ -57,6 +57,11 @@ for (int i = 0; i < 10; i++)
 // Finding the lowest selling store 
 for (int i = 0; i < 10; i++)
 {
+    if (i = 0)
+    {
+    lowest_sell = sales[i];
+    lowest_store = i;
+    }
     if (sales [i] < sales[i-1])
     {
     lowest_sell = sales[i];
