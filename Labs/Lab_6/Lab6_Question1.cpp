@@ -4,10 +4,8 @@
 
 // Declaring Functions
 int monthCheck(std::string month); // Contains the months with their spelling and correct number of days then checks if input is acceptable
-int dateCheck(int date, int max_days, int prevDate); // Checks if the day input is reasonable 
+int dateCheck(int date, int max_days, int prevDate, int i); // Checks if the day input is reasonable 
 bool snowCheck(double snowfall); // Checks if snowfall is non-negative 
-int findDate(std::string userInput);
-double findSnowfall(std::string userInput);
 std::string suffixFunction_max(int max_snow_day);
 std::string suffixFunction_min(int min_snow_day);
 
@@ -65,17 +63,14 @@ int main (){
         for (int attempt = 1; attempt <= 3; attempt++){
             int date; 
             double snowfall;
-            double  userInput;
             bool dateValid = false;
             bool snowValid = false;
             int dateCode;
 
             std::cout << "Enter the day of the month and snowfall (inches) for entry " << i << " (e.g., 12 8.750): ";
-            std::cin >> userInput;
+            std::cin >> date >> snowfall;
 
-            date = findDate(userInput);
-            snowfall = findSnowfall(userInput);
-            dateCode = dateCheck(date, max_days, prevDate);
+            dateCode = dateCheck(date, max_days, prevDate, i);
             
             switch (dateCode){
                 case 1 : dateValid = true; break;
@@ -87,7 +82,7 @@ int main (){
             snowValid = snowCheck(snowfall);
 
             // Both Checks come back valid
-            if (dateValid = true && snowValid = true){
+            if ((dateValid = true) && (snowValid = true)){
                 prevDate = date;
                 dates[i] = date;
                 snowInches[i] = snowfall;
@@ -160,54 +155,27 @@ int monthCheck(std::string month){
             return -1;
 }
 
-int inputLength;
-int date;
-
-// TODO : Rewrite this but instead of using strings, figure out a way to get both numbers out 
-// ? Use algorithms or turn it into an array ?
-// ! Remember to change the previous values from strings to whatever 
-
-int findDate(std::string userInput){
-    int spaceIndex;
-    // Find the String Length
-    inputLength = userInput.length();
-    // Find the Index of the space
-    spaceIndex = userInput.find(" ");
-    // Get date from before space
-    date = userInput.substr(0,spaceIndex);
-}
-
-// TODO : Rewrite this but instead of using strings, figure out a way to get both numbers out 
-// ? Use algorithms or turn it into an array ?
-// ! Remember to change the previous values from strings to whatever 
-
-double findSnowfall(std::string userInput){
-    int spaceIndex;
-    int snowfall;
-    // Find the String Length
-    inputLength = userInput.length();
-    // Find the Index of the space
-    spaceIndex = userInput.find(" ");
-    // Get Snowfall from after space
-    snowfall = userInput.substr(spaceIndex + 1);
-}
 
 //Day Input and Validation Function
-int dateCheck(int date, int max_days, int prevDate){
+int dateCheck(int date, int max_days, int prevDate, int i){
     // ? Is date a non-negative number ? 
     // ? Does date exceed max_days ?
     // ? Is date consecutive and Ascending ?
-
-    if (date > 0 && date <= max_days && date = prevDate + 1){
+    
+    // If its the first time, prevDate is omitted 
+    if ((date > 0) && (date <= max_days) && (i = 0)){
         return 1;
     }
-    if (date !> 0){
+    if ((date > 0) && (date <= max_days) && (date = prevDate + 1)){
+        return 1;
+    }
+    if (date < 0){
         return 2;
     }
-    if (date !< max_days && date != max_days){
+    if (date > max_days){
         return 3;
     }
-    if (date = prevDate + 1){
+    if (date != prevDate + 1){
         return 4;
     }
 }
