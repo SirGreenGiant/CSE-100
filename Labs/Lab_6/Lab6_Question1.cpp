@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cctype>
 #include <string>
-//using std::cout;
-//using std::cin;
-//using std::string;
 
 // Declaring Functions
 int monthCheck(std::string month); // Contains the months with their spelling and correct number of days then checks if input is acceptable
@@ -26,7 +23,8 @@ int main (){
     int monthIndex;
     int max_days;
     int attempt;
-    int prevDate = 0;
+    int prevDate;
+    
     // Arrays
     int dates[7];
     double snowInches[7];
@@ -35,8 +33,12 @@ int main (){
     // Month Input and Validation
     for (int attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter the month name: ";
-        std::cin >> month;
-        
+        getline (std::cin, month);
+    // Lowercase conversion
+        for (char& c : month) {
+        c = std::tolower(c);
+    }
+
         if (monthIndex != -1){
             monthIndex = monthCheck(month);
             max_days = monthDaysArray[monthIndex];
@@ -53,17 +55,17 @@ int main (){
     }
 
     // ! CHECKPOINT 
-std::cout << "\n Checkpoint 1 \n\n";
+    std::cout << "\n Checkpoint 1 \n\n";
 
-/* ! This code takes the user input, day_snowfall, then states if its valid or not. 
-If both checks come back as valid, those numbers will be input into the arrays.
-Otherwise, if even one check comes back as false the user is told what is wrong and prompted to re-enter values ! */
+    /* ! This code takes the user input, day_snowfall, then states if its valid or not. 
+    If both checks come back as valid, those numbers will be input into the arrays.
+    Otherwise, if even one check comes back as false the user is told what is wrong and prompted to re-enter values ! */
 
     for (int i = 0; i < 7; i++){
         for (int attempt = 1; attempt <= 3; attempt++){
             int date; 
             double snowfall;
-            std::string userInput;
+            double  userInput;
             bool dateValid = false;
             bool snowValid = false;
             int dateCode;
@@ -99,9 +101,9 @@ Otherwise, if even one check comes back as false the user is told what is wrong 
         }
 
     // ! CHECKPOINT 
-std::cout << "\n Checkpoint 2 \n\n";
+    std::cout << "\n Checkpoint 2 \n\n";
 
-//
+
     // Retrieving Highest Data 
         int max_snow;
         int max_snow_day;
@@ -112,6 +114,7 @@ std::cout << "\n Checkpoint 2 \n\n";
             {max_snow = snowInches[i];
             max_snow_day = dates[i];}
     }
+
     // Retrieving Lowest Data 
         int min_snow;
         int min_snow_day;
@@ -122,6 +125,7 @@ std::cout << "\n Checkpoint 2 \n\n";
             {min_snow = snowInches[i];
             min_snow_day = dates[i];}
     }
+
     // Average 
     double averageSnow =0 ;
     for (int i = 0 ; i < 7; i++){
@@ -129,7 +133,7 @@ std::cout << "\n Checkpoint 2 \n\n";
     }
     
     // ! CHECKPOINT 
-std::cout << "\n Checkpoint 3 \n\n";
+    std::cout << "\n Checkpoint 3 \n\n";
 
     // FINAL REPORT 
     std::cout << "Snow report " << month << " " << dates[0] << " - " << dates[6]<< '\n';
@@ -139,7 +143,7 @@ std::cout << "\n Checkpoint 3 \n\n";
         std::cout << "  " << dates[i] << "\t" << snowInches[i] << '\n';
     }
     std::cout << "============\n";
-    std::cout << "Highest snow fall is " << max_snow << " on " << max_snow_day << suffixFunction_max(max_snow_day);// TODO : add suffix to numbers like th nd
+    std::cout << "Highest snow fall is " << max_snow << " on " << max_snow_day << suffixFunction_max(max_snow_day);
     std::cout << "Lowest snow fall is " << min_snow << " on " << min_snow_day << suffixFunction_min(min_snow_day);
     std::cout << "The average snow fall is " << averageSnow;
     
