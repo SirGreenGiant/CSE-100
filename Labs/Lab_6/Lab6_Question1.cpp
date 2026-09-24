@@ -11,7 +11,7 @@ std::string suffixFunction_min(int min_snow_day);
 
 
 //Global Variables 
-std::string monthNamesArray[12] = {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
+std::string monthNamesArray[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 int monthDaysArray[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 
@@ -32,11 +32,15 @@ int main (){
     for (int attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter the month name: ";
         getline (std::cin, month);
+    
+        // Month Formatting
     // Lowercase conversion
-        for (char& c : month) {
+    for (char& c : month) {
         c = std::tolower(c);
-    }
-
+        }
+    // Uppercase First Letter 
+        month[0] = toupper(month[0]);
+    
         if (monthIndex != -1){
             monthIndex = monthCheck(month);
             max_days = monthDaysArray[monthIndex];
@@ -102,20 +106,20 @@ int main (){
     // Retrieving Highest Data 
         int max_snow;
         int max_snow_day;
-    for (int i = 0 ; i < 7; i++){
         max_snow = 0;
         max_snow_day = 0;
+    for (int i = 0 ; i < 7; i++){
         if (snowInches[i] > max_snow)
             {max_snow = snowInches[i];
             max_snow_day = dates[i];}
     }
 
     // Retrieving Lowest Data 
-        int min_snow;
+        int min_snow; 
         int min_snow_day;
-    for (int i = 0 ; i < 7; i++){
         min_snow = snowInches[0];
         min_snow_day = snowInches[0];
+    for (int i = 0 ; i < 7; i++){
         if (snowInches[i] < min_snow)
             {min_snow = snowInches[i];
             min_snow_day = dates[i];}
@@ -138,9 +142,9 @@ int main (){
         std::cout << "  " << dates[i] << "\t" << snowInches[i] << '\n';
     }
     std::cout << "============\n";
-    std::cout << "Highest snow fall is " << max_snow << " on " << max_snow_day << suffixFunction_max(max_snow_day);
-    std::cout << "Lowest snow fall is " << min_snow << " on " << min_snow_day << suffixFunction_min(min_snow_day);
-    std::cout << "The average snow fall is " << averageSnow;
+    std::cout << "Highest snow fall is " << max_snow << " on " << max_snow_day << suffixFunction_max(max_snow_day) << '\n';
+    std::cout << "Lowest snow fall is " << min_snow << " on " << min_snow_day << suffixFunction_min(min_snow_day) << '\n';
+    std::cout << "The average snow fall is " << averageSnow << '\n';
     
     return 0;
 }
