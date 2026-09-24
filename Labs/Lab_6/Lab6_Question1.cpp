@@ -4,8 +4,8 @@
 
 // Declaring Functions
 int monthCheck(std::string month); // Contains the months with their spelling and correct number of days then checks if input is acceptable
-int dateCheck(int date, int max_days, int prevDate); // Checks if the day input is reasonable 
-bool snowCheck(double snowfall); // Checks if snowfall is non-negative 
+// int dateCheck(int date, int max_days, int prevDate, int i); // Checks if the day input is reasonable 
+//bool snowCheck(double snowfall); // Checks if snowfall is non-negative 
 std::string suffixFunction_max(int max_snow_day);
 std::string suffixFunction_min(int min_snow_day);
 
@@ -26,7 +26,7 @@ int main (){
     int dates[7];
     double snowInches[7];
 
-    // Month Input and Validation
+// ! Month Input and Validation
     for (attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter the month name: ";
         getline (std::cin, month);
@@ -40,7 +40,6 @@ int main (){
         month[0] = toupper(month[0]);
     
         monthIndex = monthCheck(month);
-
         if (monthIndex != -1){
             max_days = monthDaysArray[monthIndex];
             break;
@@ -55,35 +54,60 @@ int main (){
         return 1;
     }
 
-    // ! CHECKPOINT 
-    std::cout << "\n Checkpoint 1 \n\n";
+    // int prevDate = dates[0] - 1;
 
-    /* ! This code takes the user input, day_snowfall, then states if its valid or not. 
-    If both checks come back as valid, those numbers will be input into the arrays.
-    Otherwise, if even one check comes back as false the user is told what is wrong and prompted to re-enter values ! */
-    int prevDate = dates[0] -1;
-
+// ! Daily Data Input and Validation
     for (int i = 0; i < 7; i++){
+        attempt = 1;
         for (int attempt = 1; attempt <= 3; attempt++){
+            // Variables
             int date; 
+            int prevDate;
             double snowfall;
             bool dateValid = false;
             bool snowValid = false;
-            // int dateCode;
-
+            int dateCode;
+            // User Input
             std::cout << "Enter the day of the month and snowfall (inches) for entry " << i + 1 << " (e.g., 12 8.750): ";
             std::cin >> date >> snowfall;
 
-            // dateCode = dateCheck(date, max_days, prevDate, i);
-            
-            switch (dateCheck(date, max_days, prevDate)){
-                case 1 : dateValid = true; break;
-                case 2 : std::cout << "Date must be non-negative\n"; break;
-                case 3 : std::cout << "Date is larger than number of days in the month!\n"; break;
-                case 4 : std::cout << "Dates must be strictly consecutive!\n";break;
+            while (i = 0){
+                int remainingDays = max_days - date;
+                if (remainingDays < 7){
+                    std::cout << "Range exceeds the days in the month! \n";break;
+                }
+                else if (date < 0){
+                    std::cout << "Date must be non-negative\n"; break;
+                }
+                else if (date > max_days){
+                    std::cout << "Date is larger than number of days in the month!\n"; break;
+                }
+                else {
+                    dateValid = true; break;
+                }
             }
-
-            snowValid = snowCheck(snowfall);
+            
+            while (i != 0){
+                if (date < 0){
+                    std::cout << "Date must be non-negative\n"; break;
+                }
+                else if (date > max_days){
+                    std::cout << "Date is larger than number of days in the month!\n"; break;
+                }
+                else if (date != ++prevDate){
+                    std::cout << "Dates must be strictly consecutive!\n";break;
+                }
+                else {
+                    dateValid = true; break;
+                }
+            }
+            
+            
+            // Snow Check
+            if (snowfall > 0){
+                snowValid = true;}  
+            else {
+                std::cout << "Invalid snowfall!" << '\n';continue;}
 
             // Both Checks come back valid
             if ((dateValid = true) && (snowValid = true)){
@@ -93,16 +117,13 @@ int main (){
                 break;
             }
         }
-            if (attempt == 3){
+            if (attempt == 4){
                 std::cout << "Exceeded the number of Invalid Attempts!" << '\n';
                 return 1;
             }
         }
 
-    // ! CHECKPOINT 
-    std::cout << "\n Checkpoint 2 \n\n";
-
-
+// ! Calculations
     // Retrieving Highest Data 
         int max_snow;
         int max_snow_day;
@@ -131,10 +152,8 @@ int main (){
         averageSnow += snowInches[i];
     }
     
-    // ! CHECKPOINT 
-    std::cout << "\n Checkpoint 3 \n\n";
 
-    // FINAL REPORT 
+// ! FINAL REPORT 
     std::cout << "Snow report " << month << " " << dates[0] << " - " << dates[6]<< '\n';
     std::cout << "============\n";
     std::cout << "Date\tSnow Fall\n";
@@ -159,14 +178,15 @@ int monthCheck(std::string month){
             return -1;
 }
 
-
+/*
 //Day Input and Validation Function
-int dateCheck(int date, int max_days, int prevDate){
+int dateCheck(int date, int max_days, int prevDate, int i){
     // ? Is date a non-negative number ? 
     // ? Does date exceed max_days ?
     // ? Is date consecutive and Ascending ?
 
-    
+    if ((date > 0) && (date <= max_days) && (i = 0)){
+        return 1;}
     if (date < 0){
         return 2;
     }
@@ -182,12 +202,14 @@ int dateCheck(int date, int max_days, int prevDate){
 }
 
 // Snowfall Input and Validation Function
-bool snowCheck(double snowfall){
- // ? Is snowfall a positive number ?
+    bool snowCheck(double snowfall){
+// ? Is snowfall a positive number ?
     if (snowfall > 0){
         return true;}
     else {return false;}
 }
+*/
+
 
 // Suffix for numbers 1-31 (MAX)
 std::string suffixFunction_max(int max_snow_day){
@@ -225,4 +247,4 @@ std::string suffixFunction_min(int min_snow_day){
     if (min_snow_day >= 24 && min_snow_day<= 29){
         return "th";
     }
-    }
+}
