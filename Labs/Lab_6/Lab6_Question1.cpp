@@ -4,7 +4,7 @@
 
 // Declaring Functions
 int monthCheck(std::string month); // Contains the months with their spelling and correct number of days then checks if input is acceptable
-int dateCheck(int date, int max_days, int prevDate, int i); // Checks if the day input is reasonable 
+int dateCheck(int date, int max_days, int prevDate); // Checks if the day input is reasonable 
 bool snowCheck(double snowfall); // Checks if snowfall is non-negative 
 std::string suffixFunction_max(int max_snow_day);
 std::string suffixFunction_min(int min_snow_day);
@@ -21,15 +21,13 @@ int main (){
     int monthIndex;
     int max_days;
     int attempt;
-    int prevDate;
     
     // Arrays
     int dates[7];
     double snowInches[7];
 
-
     // Month Input and Validation
-    for (int attempt = 1; attempt <= 3; attempt++){
+    for (attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter the month name: ";
         getline (std::cin, month);
     
@@ -41,17 +39,18 @@ int main (){
     // Uppercase First Letter 
         month[0] = toupper(month[0]);
     
+        monthIndex = monthCheck(month);
+
         if (monthIndex != -1){
-            monthIndex = monthCheck(month);
             max_days = monthDaysArray[monthIndex];
             break;
         }
         if (monthIndex == -1){
-            std::cout << "Invalid month! " << " ";
+            std::cout << "Invalid month! " << "\n";
             continue;
         }
     }
-    if (attempt == 3){
+    if (attempt == 4){
         std::cout << "Exceeded the number of Invalid Attempts!" << '\n';
         return 1;
     }
@@ -62,6 +61,7 @@ int main (){
     /* ! This code takes the user input, day_snowfall, then states if its valid or not. 
     If both checks come back as valid, those numbers will be input into the arrays.
     Otherwise, if even one check comes back as false the user is told what is wrong and prompted to re-enter values ! */
+    int prevDate = dates[0] -1;
 
     for (int i = 0; i < 7; i++){
         for (int attempt = 1; attempt <= 3; attempt++){
@@ -69,14 +69,14 @@ int main (){
             double snowfall;
             bool dateValid = false;
             bool snowValid = false;
-            int dateCode;
+            // int dateCode;
 
-            std::cout << "Enter the day of the month and snowfall (inches) for entry " << i << " (e.g., 12 8.750): ";
+            std::cout << "Enter the day of the month and snowfall (inches) for entry " << i + 1 << " (e.g., 12 8.750): ";
             std::cin >> date >> snowfall;
 
-            dateCode = dateCheck(date, max_days, prevDate, i);
+            // dateCode = dateCheck(date, max_days, prevDate, i);
             
-            switch (dateCode){
+            switch (dateCheck(date, max_days, prevDate)){
                 case 1 : dateValid = true; break;
                 case 2 : std::cout << "Date must be non-negative\n"; break;
                 case 3 : std::cout << "Date is larger than number of days in the month!\n"; break;
@@ -161,18 +161,12 @@ int monthCheck(std::string month){
 
 
 //Day Input and Validation Function
-int dateCheck(int date, int max_days, int prevDate, int i){
+int dateCheck(int date, int max_days, int prevDate){
     // ? Is date a non-negative number ? 
     // ? Does date exceed max_days ?
     // ? Is date consecutive and Ascending ?
+
     
-    // If its the first time, prevDate is omitted 
-    if ((date > 0) && (date <= max_days) && (i = 0)){
-        return 1;
-    }
-    if ((date > 0) && (date <= max_days) && (date = prevDate + 1)){
-        return 1;
-    }
     if (date < 0){
         return 2;
     }
@@ -181,6 +175,9 @@ int dateCheck(int date, int max_days, int prevDate, int i){
     }
     if (date != prevDate + 1){
         return 4;
+    }
+    if ((date > 0) && (date <= max_days) && (date = prevDate + 1)){
+        return 1;
     }
 }
 
