@@ -1,0 +1,64 @@
+#include <iostream>
+#include <iomanip>
+
+// Functions 
+double getDeposit(int month);
+double getWithdrawal(int month, double balance);
+double calculateMonthlyInterest(double annualRate, double startingBalance, double endingBalance);
+
+
+int main(){
+
+// Variables
+int month;
+double balance;
+double annualRate;
+double startingBalance;
+double endingBalance;
+double averageBalance
+
+std:: cout << std::fixed << std::setprecision(2);
+
+Ask for Starting balance and Annual Interest Rate (as a decimal)
+    std::cin >> startingBalance;
+    std::cin >> annualRate;
+
+montlyInterest = annualRate / 12 
+
+// In a For Loop
+Ask for Total Depositied Amount and Total Withdrawal Amount 3 times total
+// Use month instead of i to track progress
+{
+    // In a For Loop
+    deposit = getDeposit(month) // 3 tries
+        Check :: All numbers non negative
+    
+    balance = startingBalance + deposit
+
+    // ? Use an array to keep track of all balances, deposits, and withdrawals ?
+    // This way you can iterate through them and gather totals easier 
+
+    // In a For Loop
+    withdrawal = getWithdrawal(month, balance) // 3 tries
+        Check :: All numbers non negative
+        Check :: No Overdrafting the account 
+    
+    monthlyBalance = balance - withdrawal
+}
+
+Iterate through the montly balance array. Adding each monthly balance and dividing by 3 for Average Balance 
+Total Interest = (Average balance * Monthly Interest) * 3
+
+// OUTPUT
+Starting Balance 
+Total Deposits
+Total Withdrawals
+Total Interest 
+Final Balance 
+
+return 0;
+}
+
+double getDeposit(int month){}
+double getWithdrawal(int month, double balance){}
+double calculateMonthlyInterest(double annualRate, double startingBalance, double endingBalance){}
