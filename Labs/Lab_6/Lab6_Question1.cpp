@@ -5,8 +5,6 @@
 
 // Declaring Functions
 int monthCheck(std::string month); // Contains the months with their spelling and correct number of days then checks if input is acceptable
-// int dateCheck(int date, int max_days, int prevDate, int i); // Checks if the day input is reasonable 
-//bool snowCheck(double snowfall); // Checks if snowfall is non-negative 
 std::string suffixFunction_max(int max_snow_day);
 std::string suffixFunction_min(int min_snow_day);
 
@@ -27,7 +25,9 @@ int main (){
     double snowInches[7];
     int dateRange[7];
 
-    std::setprecision(2);
+   
+
+
     
 // ! Month Input and Validation
     for (attempt = 1; attempt <= 3; attempt++){
@@ -58,7 +58,10 @@ int main (){
     }
 
     int prevDate = 0;
-
+    int date;
+    double snowfall;
+    int dayIndex;
+    
 // ! Daily Data Input and Validation
     for (int i = 0; i < 7; i++){
         attempt = 1;
@@ -131,6 +134,14 @@ int main (){
         totalSnow += snowInches[i];
     }
     averageSnow = totalSnow / 7;
+
+    std::cout << std::fixed << std::setprecision(2) << snowInches[7];
+   std::cout << std::fixed << std::setprecision(2) << snowfall;
+   std::cout << std::fixed << std::setprecision(2) << max_snow;
+   std::cout << std::fixed << std::setprecision(2) << min_snow;
+   std::cout << std::fixed << std::setprecision(2) << averageSnow;
+   std::cout << std::fixed << std::setprecision(2) << totalSnow;
+
 
 // ! FINAL REPORT 
     std::cout << '\n' << "Snow report " << month << " " << dates[0] << " - " << dates[6]<< '\n';
