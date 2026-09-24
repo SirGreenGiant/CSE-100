@@ -1,0 +1,83 @@
+#include <iostream>
+
+use std for cout, cin, and string
+
+int main(){
+//Set Variables 
+//Set Arrays
+int dates[7];
+double inches[7];
+
+// Opening Output
+cout >> "Ask for month, day, and snowfall";
+
+
+// 3 Strikes Month Name
+for loop 3 attempts to enter month 
+{
+    // Input Month Name
+    cin >> month name
+    // Make sure month name is valid 
+    month_name = tolower(month_name);
+
+    /* TODO : make a function that list of all 12 months and their spelling 
+        ? Use a Switch Case to list months ?
+        By setting each month to a number 
+        Set each months max days 
+        rename using 3 letter month spelling 
+    */ 
+    run monthChecker Function 
+
+    if (attempts == 3)
+    {cout << "Error Message";
+    return 1;} // This terminates the program
+}
+
+for loop 3 attempts per entry 
+{
+    // This runs the program through all 7 days 
+    for (int i = 1; i <= 7; i++) {
+        date is set to false;
+        snowfall is set to false;
+
+    // Validity Checker (3 Attempts total)
+    for(int attempt = 1; attempt <=3; attempt++){
+    cout << "Please enter day of the month and snowfall in inches";
+    cin >> day of the month, snow in inches 
+    
+    while loop running through each test, tracking total attempts 
+    3 attempts gets a return 1; statement 
+    
+    /* TODO : create functions that check these things : 
+    Check if day number is valid 
+    Check Days Are Consecutive 
+    Check if snow is non negative 
+    NOTE : Days have to be within the same month and cannot roll into the next one */
+    
+    }
+    
+    // If day checker is successful, plug the data into the arrays 
+    dates[i] = day_input;
+    inches[i] = snowfall;
+
+}
+
+
+
+}
+// make sure that its comma separated 
+
+// ? How do i detect the comma and move to the next number ? 
+
+
+// OUTPUT 
+
+}
+
+
+
+
+
+
+
+}
