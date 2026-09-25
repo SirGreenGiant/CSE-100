@@ -35,6 +35,8 @@ double withdrawals[3];
 
 double currentBalance = startingBalance;
 double currentInterest = 0;
+double totalInterest = 0;
+
 
 for (month = 0; month < 3; month++){
 
@@ -86,7 +88,9 @@ bool validWithdrawal = false;
     }
 
     currentBalance -= withdrawal;
-    currentInterest = currentBalance * monthlyInterest;
+    currentInterest += currentBalance * monthlyInterest;
+    currentBalance += currentInterest;
+    totalInterest += currentInterest;
 }
 
 // Calculations 
