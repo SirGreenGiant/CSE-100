@@ -62,12 +62,10 @@ bool validWithdrawal = false;
     else{
         balance = monthlyBalance[month - 1] + deposit;
     }
-std::cout << "Validity check (deposit) : " << validDeposit << '\n';
+//std::cout << "Validity check (deposit) : " << validDeposit << '\n';
 
 // ! Withdrawals
     for (int attempt = 1; attempt <= 3; attempt++){
-        //withdrawal = getWithdrawal(month, balance);
-        double withdrawal;
         std::cout << "Enter total withdrawals for month " << month + 1 << ": ";
         std::cin >> withdrawal;
             if (withdrawal < 0){
@@ -89,7 +87,7 @@ std::cout << "Validity check (deposit) : " << validDeposit << '\n';
 
     balance -= withdrawal;
     
-    std::cout << "Validity check (withdrawal) : " << validWithdrawal << '\n';
+//    std::cout << "Validity check (withdrawal) : " << validWithdrawal << '\n';
 
 }
 
