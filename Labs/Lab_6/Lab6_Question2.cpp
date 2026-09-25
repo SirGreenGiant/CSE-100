@@ -16,12 +16,12 @@ double balance;
 double annualRate;
 double monthlyInterest;
 double startingBalance;
-double endingBalance;
+//double endingBalance;
 double averageBalance;
 double deposit;
 double withdrawal;
 
-double monthlyBalance[3];
+//double monthlyBalance[3];
 double deposits[3];
 double withdrawals[3];
 
@@ -33,8 +33,11 @@ double withdrawals[3];
     std::cin >> annualRate;
     monthlyInterest = annualRate / 12;
 
+double currentBalance = startingBalance;
+double currentInterest = 0;
 
 for (month = 0; month < 3; month++){
+
 // ! Deposits
 bool validDeposit = false;
 bool validWithdrawal = false;
@@ -51,18 +54,14 @@ bool validWithdrawal = false;
             break;
         }
     }
-        if (!validDeposit){
-            std::cout << "Too many invalid attempts!" << '\n';
-            return 1;
-        }
 
-    if (month == 0){
-        balance = startingBalance + deposit;
+    if (!validDeposit){
+        std::cout << "Too many invalid attempts!" << '\n';
+        return 1;
     }
-    else{
-        balance = monthlyBalance[month - 1] + deposit;
-    }
-//std::cout << "Validity check (deposit) : " << validDeposit << '\n';
+
+    currentBalance += deposit;
+
 
 // ! Withdrawals
     for (int attempt = 1; attempt <= 3; attempt++){
@@ -80,36 +79,34 @@ bool validWithdrawal = false;
                 break;
             }
     }
-        if (!validWithdrawal){
-            std::cout << "Too many invalid attempts!" << '\n';
-            return 1;
-        }
 
-    balance -= withdrawal;
-    
-//    std::cout << "Validity check (withdrawal) : " << validWithdrawal << '\n';
+    if (!validWithdrawal){
+        std::cout << "Too many invalid attempts!" << '\n';
+        return 1;
+    }
 
+    currentBalance -= withdrawal;
+    currentInterest = currentBalance * monthlyInterest;
 }
 
 // Calculations 
-    double totalBalance = 0;
-    double totalInterest = 0;
+//    double totalBalance = 0;
+  //  double totalInterest = 0;
     double totalDeposits = 0;
     double totalWithdrawals = 0;
     double finalBalance = 0;
     
-    // Total Deposits
+    // Total Deposits and Withdrawals
     for (int i = 0; i < 3; i++){
-        totalDeposits += deposits[i];}
-    // Total Withdrawals
-    for (int i = 0; i < 3; i++){
-        totalWithdrawals += withdrawals[i];}
-    // Total Balance
-    totalBalance = startingBalance + totalDeposits - totalWithdrawals;
+        totalDeposits += deposits[i];
+        totalWithdrawals += withdrawals[i];
+    }
+
+//    totalBalance = startingBalance + totalDeposits - totalWithdrawals;
     
-    averageBalance = (startingBalance + totalBalance) / 2;
-    totalInterest = (averageBalance * monthlyInterest) * 3;
-    finalBalance = totalInterest + totalBalance;
+//    averageBalance = (startingBalance + totalBalance) / 2;
+//    totalInterest = (averageBalance * monthlyInterest) * 3;
+    finalBalance = currentInterest + currentBalance;
 
     // OUTPUT 
     std::cout << '\n' << "Savings Account Report" << '\n';
@@ -117,7 +114,7 @@ bool validWithdrawal = false;
     std::cout << "Starting Balance: $" << startingBalance << '\n';
     std::cout << "Total Deposits:   $" << totalDeposits << '\n';
     std::cout << "Total Withdrawals:$" << totalWithdrawals << '\n';
-    std::cout << "Total Interest:   $" << totalInterest << '\n';
+    std::cout << "Total Interest:   $" << currentInterest << '\n';
     std::cout << "Final Balance:    $" << finalBalance << '\n';
 
 return 0;
