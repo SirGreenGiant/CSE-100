@@ -41,13 +41,13 @@ double withdrawals[3];
 
 
 
+startOfMonthBalance = endOfMonthBalance;
 
 for (month = 0; month < 3; month++){
 
 // ! Deposits
 bool validDeposit = false;
 bool validWithdrawal = false;
-startOfMonthBalance = endOfMonthBalance;
 
     for (int attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter total deposits for month " << month + 1 << ": ";
