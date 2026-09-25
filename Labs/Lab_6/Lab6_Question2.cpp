@@ -47,10 +47,11 @@ for (month = 0; month < 3; month++){
 // ! Deposits
 bool validDeposit = false;
 bool validWithdrawal = false;
+startOfMonthBalance = endOfMonthBalance;
+
     for (int attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter total deposits for month " << month + 1 << ": ";
         std::cin >> deposit;
-        startOfMonthBalance = endOfMonthBalance;
         
         if (deposit < 0){
             std::cout << "Invalid input! Value should be non-negative." << "\n"; continue;
@@ -128,7 +129,7 @@ bool validWithdrawal = false;
     std::cout << "----------------------" << '\n';
     std::cout << "Starting Balance: $" << startingBalance << '\n';
     std::cout << "Total Deposits:   $" << totalDeposits << '\n';
-    std::cout << "Total Withdrawals:$" << totalWithdrawals << '\n';
+    std::cout << "Total Withdrawals: $" << totalWithdrawals << '\n';
     std::cout << "Total Interest:   $" << totalInterest << '\n';
     std::cout << "Final Balance:    $" << finalBalance << '\n';
 
