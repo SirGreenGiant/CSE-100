@@ -118,11 +118,11 @@ startOfMonthBalance = endOfMonthBalance;
         totalWithdrawals += withdrawals[i];
     }
 
-//    totalBalance = startingBalance + totalDeposits - totalWithdrawals;
+    finalBalance = startingBalance + totalDeposits - totalWithdrawals;
     
 //    averageBalance = (startingBalance + totalBalance) / 2;
 //    totalInterest = (averageBalance * monthlyInterest) * 3;
-    finalBalance = totalInterest + currentBalance;
+//    finalBalance = totalInterest + currentBalance;
 
     // OUTPUT 
     std::cout << '\n' << "Savings Account Report" << '\n';
