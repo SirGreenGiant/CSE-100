@@ -89,7 +89,7 @@ bool validWithdrawal = false;
 
     currentBalance -= withdrawal;
     currentInterest += currentBalance * monthlyInterest;
-    currentBalance += currentInterest;
+    //currentBalance += currentInterest;
     totalInterest += currentInterest;
 }
 
