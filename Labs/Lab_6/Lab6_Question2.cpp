@@ -2,29 +2,147 @@
 #include <iomanip>
 
 // Functions 
-double getDeposit(int month);
-double getWithdrawal(int month, double balance);
-double calculateMonthlyInterest(double annualRate, double startingBalance, double endingBalance);
+//double getDeposit(int month);
+//double getWithdrawal(int month, double balance);
+//double calculateMonthlyInterest(double annualRate, double startingBalance, double endingBalance);
+
 
 
 int main(){
-
+std:: cout << std::fixed << std::setprecision(2);
 // Variables
 int month;
+int attempt;
 double balance;
 double annualRate;
+double monthlyInterest;
 double startingBalance;
 double endingBalance;
 double averageBalance;
+double deposit;
+double withdrawal;
 
-std:: cout << std::fixed << std::setprecision(2);
+double monthlyBalance[3];
+double deposits[3];
+double withdrawals[3];
 
 
+    //Ask for Starting balance and Annual Interest Rate (as a decimal)
+    std::cout << "Enter starting balance: ";
+    std::cin >> startingBalance;
+    std::cout << "Enter annual interest rate (as decimal, e.g., 0.05 for 5%): ";
+    std::cin >> annualRate;
+    monthlyInterest = annualRate / 12;
 
+
+for (month = 0; month < 3; month++){
+// ! Deposits
+    for (int attempt = 1; attempt <= 3; attempt++){
+        std::cout << "Enter total deposits for month " << month + 1 << ": ";
+        std::cin >> deposit;
+
+        if (deposit < 0){
+            std::cout << "Invalid input! Value should be non-negative." << "\n"; continue;
+        }       
+        else{
+            deposits[month] = deposit; break;
+        }
+    }
+        if (attempt == 4){
+            std::cout << "Too many invalid attempts!";
+            return 1;
+        }
+
+    if (month == 0){
+        balance = startingBalance + deposit;
+    }
+    else{
+        balance = monthlyBalance[month - 1] + deposit;
+    }
+
+// ! Withdrawals
+    for (int attempt = 1; attempt <= 3; attempt++){
+        //withdrawal = getWithdrawal(month, balance);
+        double withdrawal;
+        std::cout << "Enter total withdrawals for month " << month + 1 << ": ";
+        std::cin >> withdrawal;
+            if (withdrawal < 0){
+                std::cout << "Invalid input! Value should be non-negative." << "\n"; continue;
+            }
+            else if (withdrawal > balance){
+                std::cout << "Withdrawal cannot be negative or exceed current balance!" << '\n'; continue;
+            }
+            else {
+                withdrawals[month] = withdrawal; break;
+            }
+    }
+        if (attempt == 4){
+                    std::cout << "Too many invalid attempts!";
+                    return 1;
+                }
+
+    monthlyBalance[month] = balance - withdrawal;
+}
+
+// Calculations 
+    double totalBalance;
+    double totalInterest;
+    double totalDeposits;
+    double totalWithdrawals;
+    double finalBalance;
+    // Total Balance
+    for (int i = 0; i < 3; i++){
+        totalBalance += monthlyBalance[i];}
+    // Total Deposits
+    for (int i = 0; i < 3; i++){
+        totalDeposits += deposits[i];}
+    // Total Withdrawals
+    for (int i = 0; i < 3; i++){
+        totalWithdrawals += withdrawals[i];}
+    
+    averageBalance = totalBalance / 3;
+    totalInterest = (averageBalance * monthlyInterest) * 3;
+    finalBalance = totalInterest + totalBalance;
+
+    // OUTPUT 
+    std::cout << '\n' << "Savings Account Report" << '\n';
+    std::cout << "----------------------" << '\n';
+    std::cout << "Starting Balance: $" << startingBalance << '\n';
+    std::cout << "Total Deposits:   $" << totalDeposits << '\n';
+    std::cout << "Total Withdrawals:$" << totalWithdrawals << '\n';
+    std::cout << "Total Interest:   $" << totalInterest << '\n';
+    std::cout << "Final Balance:    $" << finalBalance << '\n';
 
 return 0;
 }
 
-double getDeposit(int month){}
-double getWithdrawal(int month, double balance){}
+/*
+double getDeposit(int month){
+    double deposit;
+    std::cout << "Enter total deposits for month " << month << ": ";
+    std::cin >> deposit;
+
+    if (deposit < 0){
+        return std::cout << "Invalid input! Value should be non-negative." << "\n";
+    }
+    return deposit;
+}
+
+void getWithdrawal(int month, double balance){
+    double withdrawal;
+    std::cout << "Enter total withdrawals for month " << month << ": ";
+    std::cin >> withdrawal;
+
+    
+    if (withdrawal < 0){
+        return std::cout << "Invalid input! Value should be non-negative." << "\n";
+    }
+    if (withdrawal > balance){
+        return std::cout << "Withdrawal cannot be negative or exceed current balance!" << '\n';
+    }
+    return withdrawal;
+    
+}
+
 double calculateMonthlyInterest(double annualRate, double startingBalance, double endingBalance){}
+*/
