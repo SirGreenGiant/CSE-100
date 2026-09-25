@@ -70,7 +70,7 @@ bool validWithdrawal = false;
             if (withdrawal < 0){
                 std::cout << "Invalid input! Value should be non-negative." << "\n"; continue;
             }
-            else if (withdrawal > balance){
+            else if (withdrawal > currentBalance){
                 std::cout << "Withdrawal cannot be negative or exceed current balance!" << '\n'; continue;
             }
             else {
