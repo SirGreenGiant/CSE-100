@@ -49,7 +49,7 @@ for (month = 0; month < 3; month++){
         }
     }
         if (attempt == 4){
-            std::cout << "Too many invalid attempts!";
+            std::cout << "Too many invalid attempts!" << '\n';
             return 1;
         }
 
@@ -77,7 +77,7 @@ for (month = 0; month < 3; month++){
             }
     }
         if (attempt == 4){
-                    std::cout << "Too many invalid attempts!";
+                    std::cout << "Too many invalid attempts!" << '\n';
                     return 1;
                 }
 
