@@ -129,7 +129,7 @@ startOfMonthBalance = endOfMonthBalance;
     std::cout << "----------------------" << '\n';
     std::cout << "Starting Balance: $" << startingBalance << '\n';
     std::cout << "Total Deposits:   $" << totalDeposits << '\n';
-    std::cout << "Total Withdrawals: $" << totalWithdrawals << '\n';
+    std::cout << "Total Withdrawals:$" << totalWithdrawals << '\n';
     std::cout << "Total Interest:   $" << totalInterest << '\n';
     std::cout << "Final Balance:    $" << finalBalance << '\n';
 
