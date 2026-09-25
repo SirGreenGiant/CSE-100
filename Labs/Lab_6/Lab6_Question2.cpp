@@ -107,7 +107,7 @@ bool validWithdrawal = false;
     // Total Balance
     totalBalance = startingBalance + totalDeposits - totalWithdrawals;
     
-    averageBalance = totalBalance / 3;
+    averageBalance = (startingBalance + totalBalance) / 2;
     totalInterest = (averageBalance * monthlyInterest) * 3;
     finalBalance = totalInterest + totalBalance;
 
