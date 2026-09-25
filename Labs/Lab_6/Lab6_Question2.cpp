@@ -12,7 +12,6 @@ int main(){
 std:: cout << std::fixed << std::setprecision(2);
 // Variables
 int month;
-int attempt;
 double balance;
 double annualRate;
 double monthlyInterest;
@@ -37,6 +36,8 @@ double withdrawals[3];
 
 for (month = 0; month < 3; month++){
 // ! Deposits
+bool validDeposit = false;
+bool validWithdrawal = false;
     for (int attempt = 1; attempt <= 3; attempt++){
         std::cout << "Enter total deposits for month " << month + 1 << ": ";
         std::cin >> deposit;
@@ -45,10 +46,12 @@ for (month = 0; month < 3; month++){
             std::cout << "Invalid input! Value should be non-negative." << "\n"; continue;
         }       
         else{
-            deposits[month] = deposit; break;
+            deposits[month] = deposit; 
+            validDeposit = true;
+            break;
         }
     }
-        if (attempt == 4){
+        if (!validDeposit){
             std::cout << "Too many invalid attempts!" << '\n';
             return 1;
         }
@@ -59,6 +62,7 @@ for (month = 0; month < 3; month++){
     else{
         balance = monthlyBalance[month - 1] + deposit;
     }
+std::cout << "Validity check (deposit) : " << validDeposit << '\n';
 
 // ! Withdrawals
     for (int attempt = 1; attempt <= 3; attempt++){
@@ -73,32 +77,37 @@ for (month = 0; month < 3; month++){
                 std::cout << "Withdrawal cannot be negative or exceed current balance!" << '\n'; continue;
             }
             else {
-                withdrawals[month] = withdrawal; break;
+                withdrawals[month] = withdrawal;
+                validWithdrawal = true;
+                break;
             }
     }
-        if (attempt == 4){
-                    std::cout << "Too many invalid attempts!" << '\n';
-                    return 1;
-                }
+        if (!validWithdrawal){
+            std::cout << "Too many invalid attempts!" << '\n';
+            return 1;
+        }
 
-    monthlyBalance[month] = balance - withdrawal;
+    balance -= withdrawal;
+    
+    std::cout << "Validity check (withdrawal) : " << validWithdrawal << '\n';
+
 }
 
 // Calculations 
-    double totalBalance;
-    double totalInterest;
-    double totalDeposits;
-    double totalWithdrawals;
-    double finalBalance;
-    // Total Balance
-    for (int i = 0; i < 3; i++){
-        totalBalance += monthlyBalance[i];}
+    double totalBalance = 0;
+    double totalInterest = 0;
+    double totalDeposits = 0;
+    double totalWithdrawals = 0;
+    double finalBalance = 0;
+    
     // Total Deposits
     for (int i = 0; i < 3; i++){
         totalDeposits += deposits[i];}
     // Total Withdrawals
     for (int i = 0; i < 3; i++){
         totalWithdrawals += withdrawals[i];}
+    // Total Balance
+    totalBalance = startingBalance + totalDeposits - totalWithdrawals;
     
     averageBalance = totalBalance / 3;
     totalInterest = (averageBalance * monthlyInterest) * 3;
